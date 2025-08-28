@@ -4,7 +4,8 @@ import { Conversation } from "../models/Conversation.js";
 export const createChat = async (req, res) => {
   try {
     const userId = req.user._id;
-
+    console.log("req.user:", req.user);
+    
     const chat = await Chat.create({
       user: userId,
     });
