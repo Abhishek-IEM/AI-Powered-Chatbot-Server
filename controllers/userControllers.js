@@ -50,7 +50,7 @@ export const verifyUser = async (req, res) => {
         message: "Wrong otp",
       });
 
-    const token = jwt.sign({ _id: verify.user._id }, process.env.JWT_sec, {
+    const token = jwt.sign({ _id: verify.user._id }, process.env.Jwt_sec, {
       expiresIn: "10d",
     });
 
@@ -62,6 +62,7 @@ export const verifyUser = async (req, res) => {
       token,
     });
   } catch (error) {
+    console.error("isAuth error:", error.message);
     res.status(500).json({
       message: error.message,
     });
